@@ -8,7 +8,7 @@ services:
 
   mongo:
 
-    image: paberlo/p2gps:db
+    image: carlosmaqueda/p2gps:db
 
     deploy:
 
@@ -38,7 +38,7 @@ services:
 
   order:
 
-    image: paberlo/p2gps:order
+    image: carlosmaqueda/p2gps:order
 
     depends_on:
 
@@ -66,7 +66,7 @@ services:
 
   web:
 
-    image: paberlo/p2gps:web
+    image: carlosmaqueda/p2gps:web
 
     deploy:
 
