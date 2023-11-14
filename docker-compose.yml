@@ -26,15 +26,15 @@ services:
 
         condition: on-failure #reinicar el contenedor si falla
 
-      ports:
+    ports:
 
-        - "28017:28017" # mapeo el Puerto del contenedor (derecha) con el puerto del host del servicio
+      - "28017:28017" # mapeo el Puerto del contenedor (derecha) con el puerto del host del servicio
 
-        - "27017:27017"
+      - "27017:27017"
 
-      volumes:
+    volumes:
 
-        - "db-data:/data/db" # para dar persistencia a la sesión
+      - "db-data:/data/db" # para dar persistencia a la sesión
 
   order:
 
