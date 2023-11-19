@@ -20,21 +20,21 @@ services:
 
           cpus: "0.15"
 
-          memory: 200M
+          # memory: 200M
 
       restart_policy:
 
-        condition: on-failure #reinicar el contenedor si falla
+        condition: none #reinicar el contenedor si falla
 
     ports:
 
-      - "28017:28017" # mapeo el Puerto del contenedor (derecha) con el puerto del host del servicio
+      - "28017" # mapeo el Puerto del contenedor (derecha) con el puerto del host del servicio
 
-      - "27017:27017"
+      - "27017"
 
     volumes:
 
-      - "db-data:/data/db" # para dar persistencia a la sesión
+      - "db-data:/var/logs/" # para dar persistencia a la sesión
 
   order:
 
@@ -52,17 +52,17 @@ services:
 
         limits:
 
-          cpus: "0.3"
+          cpus: "1.0"
 
-          memory: 500M
+          # memory: 500M
 
       restart_policy:
 
-        condition: on-failure
+        condition: none
 
     ports:
 
-      - "8080:8080"
+      - "8080"
 
   web:
 
@@ -78,16 +78,24 @@ services:
 
           cpus: "0.25"
 
-          memory: 300M
+          # memory: 300M
 
       restart_policy:
 
-        condition: on-failure
+        condition: none
 
     ports:
 
-      - "80:8080"
+      - "8082"
 
 volumes:
 
   db-data:
+
+    driver: azure_file
+
+    driver_opts:
+
+      share_name: db-data
+      
+      storage_account_name: almacengps89118
